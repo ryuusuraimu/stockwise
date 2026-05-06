@@ -1,20 +1,20 @@
-import { useState } from 'react'
-import './App.css'
-import { faqs } from './data/faqs'
+import { useState } from "react";
+import "./App.css";
+import { faqs } from "./data/faqs";
 
 function App() {
-  const [searchText, setSearchText] = useState('') // 検索キーワードの状態を管理・Reactが覚えるための箱
+  const [searchText, setSearchText] = useState(""); // 検索キーワードの状態を管理・Reactが覚えるための箱
 
   const filteredFaqs = faqs.filter((faq) => {
-    const keyword = searchText.toLowerCase()
+    const keyword = searchText.toLowerCase();
 
     return (
       faq.term.toLowerCase().includes(keyword) ||
       faq.question.toLowerCase().includes(keyword) ||
       faq.answer.toLowerCase().includes(keyword) ||
       faq.tags.some((tag) => tag.toLowerCase().includes(keyword))
-    )
-  })
+    );
+  });
 
   return (
     <main className="app">
@@ -30,11 +30,10 @@ function App() {
           <input
             type="text"
             value={searchText}
-            onChange={(event) => setSearchText(event.target.value)} //入力欄に文字が入るたびに、SearchTextを更新する処理
+            onChange={(event) => setSearchText(event.target.value)}
             placeholder="例：PER、NISA、配当利回り"
             aria-label="検索キーワード"
           />
-          <button type="button">検索</button>
         </div>
       </section>
 
@@ -58,7 +57,7 @@ function App() {
         </div>
       </section>
     </main>
-  )
+  );
 }
 
-export default App
+export default App;
