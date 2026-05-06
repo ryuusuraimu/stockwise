@@ -1,20 +1,12 @@
-import { useState } from "react";
-import "./App.css";
-import { faqs } from "./data/faqs";
+import { useState } from 'react'
+import './App.css'
+import { faqs } from './data/faqs'
+import { searchFaqs } from './utils/searchFaqs'
 
 function App() {
-  const [searchText, setSearchText] = useState(""); // 検索キーワードの状態を管理・Reactが覚えるための箱
+  const [searchText, setSearchText] = useState('') // 検索キーワードの状態を管理・Reactが覚えるための箱
 
-  const filteredFaqs = faqs.filter((faq) => {
-    const keyword = searchText.toLowerCase();
-
-    return (
-      faq.term.toLowerCase().includes(keyword) ||
-      faq.question.toLowerCase().includes(keyword) ||
-      faq.answer.toLowerCase().includes(keyword) ||
-      faq.tags.some((tag) => tag.toLowerCase().includes(keyword))
-    );
-  });
+  const filteredFaqs = searchFaqs(faqs, searchText)
 
   return (
     <main className="app">
@@ -57,7 +49,7 @@ function App() {
         </div>
       </section>
     </main>
-  );
+  )
 }
 
-export default App;
+export default App
