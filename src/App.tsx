@@ -55,21 +55,30 @@ function App() {
       <section className="results">
         <p className="resultCount">{filteredFaqs.length}件のFAQ</p>
 
-        <div className="faqList">
-          {filteredFaqs.map((faq) => (
-            <article className="faqCard" key={faq.id}>
-              <p className="term">{faq.term}</p>
-              <h2>{faq.question}</h2>
-              <p>{faq.answer}</p>
+        {filteredFaqs.length === 0 ? (
+          <div className="emptyMessage">
+            <p>該当するFAQが見つかりませんでした。</p>
+            <p>
+              別のキーワードを試すか、カテゴリを「すべて」に戻してみてください。
+            </p>
+          </div>
+        ) : (
+          <div className="faqList">
+            {filteredFaqs.map((faq) => (
+              <article className="faqCard" key={faq.id}>
+                <p className="term">{faq.term}</p>
+                <h2>{faq.question}</h2>
+                <p>{faq.answer}</p>
 
-              <div className="tags">
-                {faq.tags.map((tag) => (
-                  <span key={tag}>{tag}</span>
-                ))}
-              </div>
-            </article>
-          ))}
-        </div>
+                <div className="tags">
+                  {faq.tags.map((tag) => (
+                    <span key={tag}>{tag}</span>
+                  ))}
+                </div>
+              </article>
+            ))}
+          </div>
+        )}
       </section>
     </main>
   );
