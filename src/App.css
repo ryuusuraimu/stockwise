@@ -58,21 +58,6 @@ h1 {
   outline: none;
 }
 
-.searchBox button {
-  border: none;
-  border-radius: 999px;
-  padding: 14px 24px;
-  font-size: 15px;
-  font-weight: 700;
-  color: white;
-  background: #2563eb;
-  cursor: pointer;
-}
-
-.searchBox button:hover {
-  background: #1d4ed8;
-}
-
 .results {
   width: min(100%, 920px);
   margin-top: 56px;
@@ -143,4 +128,34 @@ h1 {
   background: white;
   color: #64748b;
   text-align: center;
+}
+
+.categoryFilter {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin: 28px auto 0;
+  max-width: 840px;
+}
+
+.categoryButton {
+  border: 1px solid #dbeafe;
+  border-radius: 999px;
+  padding: 8px 14px;
+  background: white;
+  color: #2563eb;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.categoryButton:hover {
+  background: #eff6ff;
+}
+
+.categoryButton.isActive {
+  background: #2563eb;
+  color: white;
+  border-color: #2563eb;
 }

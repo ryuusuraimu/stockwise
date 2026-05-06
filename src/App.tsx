@@ -1,12 +1,19 @@
-import { useState } from 'react'
-import './App.css'
-import { faqs } from './data/faqs'
-import { searchFaqs } from './utils/searchFaqs'
+import { useState } from "react";
+import "./App.css";
+import { faqs } from "./data/faqs";
+import { searchFaqs } from "./utils/searchFaqs";
 
 function App() {
-  const [searchText, setSearchText] = useState('') // 検索キーワードの状態を管理・Reactが覚えるための箱
+  const [searchText, setSearchText] = useState(""); // 検索キーワードの状態を管理・Reactが覚えるための箱
+  const [selectedCategory, setSelectedCategory] = useState("すべて");
+  const categories = ["すべて", ...new Set(faqs.map((faq) => faq.category))];
 
-  const filteredFaqs = searchFaqs(faqs, searchText)
+  const searchedFaqs = searchFaqs(faqs, searchText);
+
+  const filteredFaqs =
+    selectedCategory === "すべて"
+      ? searchedFaqs
+      : searchedFaqs.filter((faq) => faq.category === selectedCategory);
 
   return (
     <main className="app">
@@ -26,6 +33,22 @@ function App() {
             placeholder="例：PER、NISA、配当利回り"
             aria-label="検索キーワード"
           />
+        </div>
+        <div className="categoryFilter" aria-label="FAQカテゴリ">
+          {categories.map((category) => (
+            <button
+              className={
+                selectedCategory === category
+                  ? "categoryButton isActive"
+                  : "categoryButton"
+              }
+              key={category}
+              type="button"
+              onClick={() => setSelectedCategory(category)}
+            >
+              {category}
+            </button>
+          ))}
         </div>
       </section>
 
@@ -49,7 +72,7 @@ function App() {
         </div>
       </section>
     </main>
-  )
+  );
 }
 
-export default App
+export default App;
