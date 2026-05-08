@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./App.css";
 import { faqs } from "./data/faqs";
 import { searchFaqs } from "./utils/searchFaqs";
+import { FAQCard } from "./components/FAQCard";
 
 function App() {
   const [searchText, setSearchText] = useState(""); // 検索キーワードの状態を管理・Reactが覚えるための箱
@@ -65,17 +66,7 @@ function App() {
         ) : (
           <div className="faqList">
             {filteredFaqs.map((faq) => (
-              <article className="faqCard" key={faq.id}>
-                <p className="term">{faq.term}</p>
-                <h2>{faq.question}</h2>
-                <p>{faq.answer}</p>
-
-                <div className="tags">
-                  {faq.tags.map((tag) => (
-                    <span key={tag}>{tag}</span>
-                  ))}
-                </div>
-              </article>
+              <FAQCard faq={faq} key={faq.id} />
             ))}
           </div>
         )}
