@@ -1,12 +1,25 @@
 import type { FAQ } from '../data/faqs'
 
-// 検索しやすくするための前処理を行う関数・スペースを削除して小文字にする
 const normalizeText = (text: string) => {
   return text.toLowerCase().replace(/\s+/g, '').trim()
 }
 
-export const searchFaqs = (faqs: FAQ[], searchText: string) => {
-  const keyword = normalizeText(searchText)
+const getSummaryBlockText = (faq: FAQ) => {
+  return faq.blocks.find((block) => block.id.endsWith('-summary'))?.body ?? ''
+}
+
+export function searchFaqs(query: string, faqs: FAQ[]): FAQ[]
+export function searchFaqs(faqs: FAQ[], query: string): FAQ[]
+export function searchFaqs(
+  queryOrFaqs: string | FAQ[],
+  faqsOrQuery: FAQ[] | string,
+) {
+  const query =
+    typeof queryOrFaqs === 'string' ? queryOrFaqs : String(faqsOrQuery)
+  const faqs = Array.isArray(queryOrFaqs)
+    ? queryOrFaqs
+    : (faqsOrQuery as FAQ[])
+  const keyword = normalizeText(query)
 
   if (keyword === '') {
     return faqs
@@ -14,13 +27,7 @@ export const searchFaqs = (faqs: FAQ[], searchText: string) => {
 
   return faqs.filter((faq) => {
     const searchableText = normalizeText(
-      [
-        faq.term,
-        faq.question,
-        faq.answer,
-        faq.category,
-        ...faq.tags,
-      ].join(' '),
+      [faq.title, ...faq.tags, getSummaryBlockText(faq)].join(' '),
     )
 
     return searchableText.includes(keyword)
