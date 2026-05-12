@@ -1,46 +1,83 @@
-# Stockwise Agent Instructions
+# Stockwise AGENTS.md
 
-Stockwise is a beginner-friendly FAQ search app for stock investing concepts. It helps new investors search, understand, save, and revisit investment concepts safely.
+## Project
 
-The app must remain educational. It must not provide financial advice, investment recommendations, stock predictions, or claims of guaranteed returns.
+Stockwise is an Editorial Investor Notebook for beginner investors.
 
-## Required Reading
+It helps users:
+1. search investment FAQ knowledge,
+2. read structured official knowledge blocks,
+3. save those blocks as short understanding notes,
+4. later ask their saved notes in a source-grounded way.
 
-Before making product or code changes, AI coding agents must read:
+Phase 1 focuses on the local harness only.
 
-- `docs/product-brief.md`
-- `docs/persona.md`
-- `docs/non-goals.md`
-- `docs/agent-workflow.md`
+## Current goal
 
-## Core Product Flow
+Build a development harness for validating:
+- data models
+- mock FAQ data
+- reusable UI components
+- screen states
+- local note state
+- mock AI helper behavior
 
-Preserve the core user flow:
+Do not build a production backend.
+Do not call real AI APIs.
+Do not implement authentication.
+Do not add vector DB or semantic search.
 
-Search -> FAQ -> understanding -> related concepts -> save/revisit
+## Design direction
 
-Every change should support this flow or be clearly necessary to maintain it.
+Use an Editorial Investor Notebook UI.
 
-## Core Rules
+Use:
+- left sidebar navigation
+- warm off-white background
+- soft white cards
+- deep muted green actions
+- deep charcoal text
+- source chips
+- document-like FAQ detail pages
+- calm knowledge cards
+- Japanese labels as primary UI language
 
-- Do not recommend specific stocks.
-- Do not imply guaranteed returns.
-- Do not add stock prediction features.
-- Do not add login or backend unless explicitly requested.
-- Do not add AI chat unless explicitly requested.
-- Do not add brokerage integration, portfolio management, or real-time market data unless explicitly requested.
-- Keep React/TypeScript code simple and explainable.
-- Prefer clear component responsibility over clever abstraction.
-- Make small, focused changes.
-- Avoid unrelated features and broad rewrites.
+Avoid:
+- trading dashboards
+- stock charts
+- candlestick charts
+- market tickers
+- red/green profit-loss UI
+- chat bubbles
+- Google Material look
+- crypto-like UI
+- overly corporate Bloomberg-style terminals
 
-## Expected Agent Output
+## UI labels
 
-After making changes, always explain:
+Use these Japanese labels consistently:
 
-- What changed
-- Why it matters for the product
-- How to test it
-- Possible risks or follow-up tasks
+- ホーム
+- 理解ノート
+- ライブラリ
+- ノートに聞く
+- 最近の理解
+- つながる知識
+- 参照元
+- 関連ソース
+- ＋ 理解ノートに追加
+- まず一言で
+- もう少し詳しく
+- 例で見る
+- よくある誤解
 
-Stockwise should feel calm, trustworthy, and beginner-safe. If a proposed feature makes the product feel like financial advice, trading guidance, or a brokerage tool, it should be rejected or deferred.
+## Implementation rules
+
+- Use TypeScript.
+- Keep data models in `src/types.ts`.
+- Keep mock FAQ data in `src/data/faqs.ts`.
+- Keep harness fixtures in `src/fixtures`.
+- Keep mock AI helpers in `src/utils/aiMocks.ts`.
+- Keep harness pages in `src/harness`.
+- Prefer small focused changes.
+- After each task, run typecheck/build if scripts exist.
