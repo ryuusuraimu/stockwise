@@ -1,20 +1,11 @@
 import type { UserNote } from '../types'
 
-export type MockUserNote = UserNote & {
-  sourceBlockId: string
-}
-
-const createMockNote = (
-  note: Omit<MockUserNote, 'blockId'>,
-): MockUserNote => ({
-  ...note,
-  blockId: note.sourceBlockId,
-})
+export type MockUserNote = UserNote
 
 export const mockNotesEmpty: MockUserNote[] = []
 
 export const mockNotesOne: MockUserNote[] = [
-  createMockNote({
+  {
     id: 'note-per-summary',
     faqId: 'faq-per',
     sourceBlockId: 'faq-per-summary',
@@ -25,12 +16,12 @@ export const mockNotesOne: MockUserNote[] = [
     sourceReferenceIds: ['src-jpx-money'],
     createdAt: '2026-05-12T09:00:00.000Z',
     updatedAt: '2026-05-12T09:00:00.000Z',
-  }),
+  },
 ]
 
 export const mockNotesTwo: MockUserNote[] = [
   ...mockNotesOne,
-  createMockNote({
+  {
     id: 'note-nisa-misconception',
     faqId: 'faq-nisa',
     sourceBlockId: 'faq-nisa-misconception',
@@ -41,12 +32,12 @@ export const mockNotesTwo: MockUserNote[] = [
     sourceReferenceIds: ['src-fsa-nisa'],
     createdAt: '2026-05-12T09:10:00.000Z',
     updatedAt: '2026-05-12T09:10:00.000Z',
-  }),
+  },
 ]
 
 export const mockNotesAskUnlocked: MockUserNote[] = [
   ...mockNotesTwo,
-  createMockNote({
+  {
     id: 'note-diversification-summary',
     faqId: 'faq-diversification',
     sourceBlockId: 'faq-diversification-summary',
@@ -57,7 +48,7 @@ export const mockNotesAskUnlocked: MockUserNote[] = [
     sourceReferenceIds: ['src-fsa-guide'],
     createdAt: '2026-05-12T09:20:00.000Z',
     updatedAt: '2026-05-12T09:20:00.000Z',
-  }),
+  },
 ]
 
 export const mockNoteScenarios = {

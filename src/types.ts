@@ -31,7 +31,7 @@ export type FAQ = {
 export type UserNote = {
   id: string
   faqId: string
-  blockId: string
+  sourceBlockId: string
   title: string
   excerpt: string
   memo?: string

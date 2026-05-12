@@ -10,8 +10,10 @@ const getSummaryBlock = (faq: FAQ) => {
   return faq.blocks.find((block) => block.id.endsWith('-summary'))
 }
 
-const findFaqBlock = (faqs: FAQ[], blockId: string) => {
-  return faqs.flatMap((faq) => faq.blocks).find((block) => block.id === blockId)
+const findFaqBlock = (faqs: FAQ[], sourceBlockId: string) => {
+  return faqs
+    .flatMap((faq) => faq.blocks)
+    .find((block) => block.id === sourceBlockId)
 }
 
 const findSourceTitle = (faqs: FAQ[], sourceReferenceId: string) => {
@@ -86,7 +88,7 @@ export const askMyNotes = (
     ...new Set(notes.flatMap((note) => note.sourceReferenceIds)),
   ]
   const noteLines = notes.map((note) => {
-    const block = findFaqBlock(faqs, note.blockId)
+    const block = findFaqBlock(faqs, note.sourceBlockId)
     const sourceLabel = note.sourceReferenceIds
       .map((sourceReferenceId) => findSourceTitle(faqs, sourceReferenceId))
       .join('、')

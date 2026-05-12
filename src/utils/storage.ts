@@ -16,7 +16,7 @@ const isUserNote = (value: unknown): value is UserNote => {
   return (
     typeof note.id === 'string' &&
     typeof note.faqId === 'string' &&
-    typeof note.blockId === 'string' &&
+    typeof note.sourceBlockId === 'string' &&
     typeof note.title === 'string' &&
     typeof note.excerpt === 'string' &&
     Array.isArray(note.sourceReferenceIds) &&

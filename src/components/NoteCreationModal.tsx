@@ -9,6 +9,7 @@ type NoteCreationModalProps = {
   faq: FAQ
   block: FAQBlock
   initialDraft: string
+  previewMode?: boolean
   onClose: () => void
   onSave: (note: NoteCreationPayload) => void
 }
@@ -18,6 +19,7 @@ export function NoteCreationModal({
   faq,
   block,
   initialDraft,
+  previewMode = false,
   onClose,
   onSave,
 }: NoteCreationModalProps) {
@@ -42,13 +44,13 @@ export function NoteCreationModal({
       role="presentation"
       style={{
         alignItems: 'center',
-        background: 'rgba(35, 41, 37, 0.28)',
+        background: previewMode ? '#f7f3ea' : 'rgba(35, 41, 37, 0.28)',
         display: 'flex',
-        inset: 0,
+        inset: previewMode ? undefined : 0,
         justifyContent: 'center',
         padding: '20px',
-        position: 'fixed',
-        zIndex: 20,
+        position: previewMode ? 'relative' : 'fixed',
+        zIndex: previewMode ? 0 : 20,
       }}
     >
       <section
@@ -135,43 +137,62 @@ export function NoteCreationModal({
             justifyContent: 'flex-end',
           }}
         >
+          {previewMode ? (
+            <span
+              style={{
+                border: '1px solid #d8d0c2',
+                borderRadius: '8px',
+                background: '#fffdf8',
+                color: '#60685f',
+                padding: '10px 14px',
+              }}
+            >
+              静的プレビュー
+            </span>
+          ) : (
+            <button
+              type="button"
+              onClick={onClose}
+              style={{
+                border: '1px solid #d8d0c2',
+                borderRadius: '8px',
+                background: '#fffdf8',
+                color: '#232925',
+                cursor: 'pointer',
+                padding: '10px 14px',
+              }}
+            >
+              閉じる
+            </button>
+          )}
           <button
             type="button"
-            onClick={onClose}
-            style={{
-              border: '1px solid #d8d0c2',
-              borderRadius: '8px',
-              background: '#fffdf8',
-              color: '#232925',
-              cursor: 'pointer',
-              padding: '10px 14px',
-            }}
-          >
-            閉じる
-          </button>
-          <button
-            type="button"
-            onClick={() =>
+            disabled={previewMode}
+            onClick={() => {
+              if (previewMode) {
+                return
+              }
+
               onSave({
                 faqId: faq.id,
-                blockId: block.id,
+                sourceBlockId: block.id,
                 title,
                 excerpt,
                 memo,
                 sourceReferenceIds: block.sourceReferenceIds,
               })
-            }
+            }}
             style={{
               border: 'none',
               borderRadius: '8px',
-              background: '#315f46',
+              background: previewMode ? '#8ba08f' : '#315f46',
               color: '#fffdf8',
-              cursor: 'pointer',
+              cursor: previewMode ? 'default' : 'pointer',
               fontWeight: 700,
               padding: '10px 14px',
             }}
           >
-            保存する
+            {previewMode ? '保存プレビュー' : '保存する'}
           </button>
         </div>
       </section>

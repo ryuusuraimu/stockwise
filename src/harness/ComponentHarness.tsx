@@ -48,7 +48,7 @@ export function ComponentHarness() {
   const stickyNote = mockNotesAskUnlocked[0]
   const stickyNoteFaq = faqs.find((faq) => faq.id === stickyNote.faqId)
   const stickyNoteBlock = stickyNoteFaq?.blocks.find(
-    (block) => block.id === stickyNote.blockId,
+    (block) => block.id === stickyNote.sourceBlockId,
   )
   const stickyNoteSources =
     stickyNoteFaq?.sourceReferences.filter((source) =>
@@ -144,6 +144,7 @@ export function ComponentHarness() {
         >
           <NoteCreationModal
             isOpen
+            previewMode
             faq={primaryFaq}
             block={primaryFaq.blocks[0]}
             initialDraft={generateAiDraft(primaryFaq.blocks[0])}

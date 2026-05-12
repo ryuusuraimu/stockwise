@@ -1,6 +1,13 @@
 import { useState } from 'react'
 import type { CSSProperties } from 'react'
 
+import { FAQBlockCard } from '../components/FAQBlockCard'
+import { FAQCard } from '../components/FAQCard'
+import { RelatedKnowledgeChips } from '../components/RelatedKnowledgeChips'
+import { SearchBar } from '../components/SearchBar'
+import { StickyNoteCard } from '../components/StickyNoteCard'
+import { faqs } from '../data/faqs'
+import { mockNotesOne } from '../fixtures/mockNotes'
 import { ComponentHarness } from './ComponentHarness'
 import { ScreenStateHarness } from './ScreenStateHarness'
 
@@ -46,6 +53,22 @@ const getTabButtonStyle = (isActive: boolean): CSSProperties => ({
 })
 
 function FlowHarness() {
+  const [query, setQuery] = useState('PER')
+  const perFaq = faqs.find((faq) => faq.id === 'faq-per') ?? faqs[0]
+  const summaryBlock =
+    perFaq.blocks.find((block) => block.id === 'faq-per-summary') ??
+    perFaq.blocks[0]
+  const note = mockNotesOne[0]
+  const relatedKnowledge = ['faq-eps', 'faq-pbr', 'faq-roe']
+    .map((faqId) => faqs.find((faq) => faq.id === faqId))
+    .filter((faq) => faq !== undefined)
+  const sourceBlock = perFaq.blocks.find(
+    (block) => block.id === note.sourceBlockId,
+  )
+  const noteSources = perFaq.sourceReferences.filter((source) =>
+    note.sourceReferenceIds.includes(source.id),
+  )
+
   return (
     <main
       style={{
@@ -57,33 +80,165 @@ function FlowHarness() {
         padding: '32px',
       }}
     >
-      <section
-        style={{
-          background: '#fffdf8',
-          border: '1px solid #e4ded2',
-          borderRadius: '8px',
-          display: 'grid',
-          gap: '14px',
-          padding: '20px',
-        }}
-      >
+      <header style={{ maxWidth: '760px' }}>
         <p
           style={{
             color: '#315f46',
             fontSize: '13px',
             fontWeight: 800,
-            margin: 0,
+            margin: '0 0 8px',
           }}
         >
           Flows
         </p>
-        <h2 style={{ fontSize: '22px', lineHeight: 1.4, margin: 0 }}>
-          Search → FAQ → understanding → related concepts → save/revisit
+        <h2 style={{ fontSize: '26px', lineHeight: 1.35, margin: 0 }}>
+          Search → Find → Save → Internalize → Revisit
         </h2>
-        <p style={{ color: '#60685f', lineHeight: 1.8, margin: 0 }}>
-          このタブはフロー検証用の入口です。現時点では本番画面やルーティングを追加せず、
-          Components と Screen States のハーネスを組み合わせて確認します。
-        </p>
+      </header>
+
+      <section
+        style={{
+          display: 'grid',
+          gap: '16px',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+        }}
+      >
+        <article
+          style={{
+            background: '#fffdf8',
+            border: '1px solid #e4ded2',
+            borderRadius: '8px',
+            display: 'grid',
+            gap: '12px',
+            padding: '18px',
+          }}
+        >
+          <p
+            style={{
+              color: '#315f46',
+              fontSize: '13px',
+              fontWeight: 800,
+              margin: 0,
+            }}
+          >
+            検索する
+          </p>
+          <SearchBar value={query} onChange={setQuery} />
+        </article>
+
+        <article style={{ display: 'grid', gap: '12px' }}>
+          <p
+            style={{
+              color: '#315f46',
+              fontSize: '13px',
+              fontWeight: 800,
+              margin: 0,
+            }}
+          >
+            見つける
+          </p>
+          <FAQCard faq={perFaq} />
+        </article>
+
+        <article style={{ display: 'grid', gap: '12px' }}>
+          <p
+            style={{
+              color: '#315f46',
+              fontSize: '13px',
+              fontWeight: 800,
+              margin: 0,
+            }}
+          >
+            読む
+          </p>
+          <FAQBlockCard
+            block={summaryBlock}
+            sources={perFaq.sourceReferences.filter((source) =>
+              summaryBlock.sourceReferenceIds.includes(source.id),
+            )}
+          />
+        </article>
+
+        <article
+          style={{
+            background: '#fffdf8',
+            border: '1px solid #e4ded2',
+            borderRadius: '8px',
+            display: 'grid',
+            gap: '12px',
+            padding: '18px',
+          }}
+        >
+          <p
+            style={{
+              color: '#315f46',
+              fontSize: '13px',
+              fontWeight: 800,
+              margin: 0,
+            }}
+          >
+            理解ノートに追加
+          </p>
+          <p style={{ color: '#60685f', lineHeight: 1.8, margin: 0 }}>
+            公式知識ブロックから、短い理解メモの下書きを作ります。
+          </p>
+          <button
+            type="button"
+            style={{
+              border: 'none',
+              borderRadius: '8px',
+              background: '#315f46',
+              color: '#fffdf8',
+              cursor: 'default',
+              fontWeight: 800,
+              justifySelf: 'start',
+              padding: '10px 14px',
+            }}
+          >
+            ＋ 理解ノートに追加
+          </button>
+        </article>
+
+        <article style={{ display: 'grid', gap: '12px' }}>
+          <p
+            style={{
+              color: '#315f46',
+              fontSize: '13px',
+              fontWeight: 800,
+              margin: 0,
+            }}
+          >
+            自分の理解にする
+          </p>
+          <StickyNoteCard
+            note={note}
+            sourceBlock={sourceBlock}
+            sources={noteSources}
+          />
+        </article>
+
+        <article
+          style={{
+            background: '#fffdf8',
+            border: '1px solid #e4ded2',
+            borderRadius: '8px',
+            display: 'grid',
+            gap: '12px',
+            padding: '18px',
+          }}
+        >
+          <p
+            style={{
+              color: '#315f46',
+              fontSize: '13px',
+              fontWeight: 800,
+              margin: 0,
+            }}
+          >
+            つながる知識を見る
+          </p>
+          <RelatedKnowledgeChips relatedFaqs={relatedKnowledge} />
+        </article>
       </section>
     </main>
   )

@@ -1,13 +1,6 @@
 import type { FAQ as CoreFAQ } from '../types'
 
-type FAQCompatibilityFields = {
-  term: string
-  answer: string
-  sourceUrls: string[]
-  sourceNote: string
-}
-
-export type FAQ = CoreFAQ & FAQCompatibilityFields
+export type FAQ = CoreFAQ
 
 export const faqs: FAQ[] = [
   {
@@ -17,9 +10,6 @@ export const faqs: FAQ[] = [
     question: 'PERは株価を見るときに何を表しますか？',
     category: '株価指標',
     tags: ['PER', '株価収益率', 'EPS', 'バリュエーション'],
-    term: 'PER',
-    answer:
-      'PERは、株価が1株あたり利益の何倍になっているかを見る指標です。会社の利益に対して株価が高いか低いかを考える入口になります。',
     blocks: [
       {
         id: 'faq-per-summary',
@@ -55,8 +45,6 @@ export const faqs: FAQ[] = [
         note: '投資指標の基本説明を参考にしたモック参照元。',
       },
     ],
-    sourceUrls: ['https://money-bu-jpx.com/'],
-    sourceNote: '日本取引所グループの投資教育コンテンツを参考にしたモックデータ。',
     relatedFaqIds: ['faq-eps', 'faq-valuation', 'faq-value-stock'],
     updatedAt: '2026-05-12',
   },
@@ -67,9 +55,6 @@ export const faqs: FAQ[] = [
     question: 'PBRは会社の何を見ている指標ですか？',
     category: '株価指標',
     tags: ['PBR', '純資産', 'BPS', 'バリュエーション'],
-    term: 'PBR',
-    answer:
-      'PBRは、株価が1株あたり純資産の何倍かを見る指標です。会社の資産面から株価水準を考える入口になります。',
     blocks: [
       {
         id: 'faq-pbr-summary',
@@ -105,8 +90,6 @@ export const faqs: FAQ[] = [
         note: '証券用語の基礎説明を参考にしたモック参照元。',
       },
     ],
-    sourceUrls: ['https://www.jsda.or.jp/'],
-    sourceNote: '日本証券業協会の用語説明を参考にしたモックデータ。',
     relatedFaqIds: ['faq-valuation', 'faq-value-stock', 'faq-risk'],
     updatedAt: '2026-05-12',
   },
@@ -117,9 +100,6 @@ export const faqs: FAQ[] = [
     question: 'EPSは投資判断でどのように使われますか？',
     category: '企業分析',
     tags: ['EPS', '1株利益', '利益', 'PER'],
-    term: 'EPS',
-    answer:
-      'EPSは1株あたりの利益を表します。会社が株主に対してどれくらい利益を生み出したかを見る基本指標です。',
     blocks: [
       {
         id: 'faq-eps-summary',
@@ -154,8 +134,6 @@ export const faqs: FAQ[] = [
         url: 'https://money-bu-jpx.com/',
       },
     ],
-    sourceUrls: ['https://money-bu-jpx.com/'],
-    sourceNote: '投資指標の基礎説明を参考にしたモックデータ。',
     relatedFaqIds: ['faq-per', 'faq-growth-stock', 'faq-valuation'],
     updatedAt: '2026-05-12',
   },
@@ -166,9 +144,6 @@ export const faqs: FAQ[] = [
     question: 'ROEは会社のどんな力を表しますか？',
     category: '企業分析',
     tags: ['ROE', '自己資本利益率', '収益性', '資本効率'],
-    term: 'ROE',
-    answer:
-      'ROEは、株主の資本を使ってどれだけ効率よく利益を出したかを見る指標です。',
     blocks: [
       {
         id: 'faq-roe-summary',
@@ -203,8 +178,6 @@ export const faqs: FAQ[] = [
         url: 'https://money-bu-jpx.com/',
       },
     ],
-    sourceUrls: ['https://money-bu-jpx.com/'],
-    sourceNote: '資本効率の説明を参考にしたモックデータ。',
     relatedFaqIds: ['faq-growth-stock', 'faq-risk', 'faq-valuation'],
     updatedAt: '2026-05-12',
   },
@@ -215,9 +188,6 @@ export const faqs: FAQ[] = [
     question: 'NISAは初心者にとって何を助ける制度ですか？',
     category: '制度と税金',
     tags: ['NISA', '非課税', '税金', '長期投資'],
-    term: 'NISA',
-    answer:
-      'NISAは、一定の投資枠内で得た利益や配当が非課税になる制度です。投資を始める人が税金の仕組みを理解する入口になります。',
     blocks: [
       {
         id: 'faq-nisa-summary',
@@ -252,8 +222,6 @@ export const faqs: FAQ[] = [
         url: 'https://www.fsa.go.jp/policy/nisa2/',
       },
     ],
-    sourceUrls: ['https://www.fsa.go.jp/policy/nisa2/'],
-    sourceNote: '金融庁のNISA制度説明を参考にしたモックデータ。',
     relatedFaqIds: ['faq-tax', 'faq-long-term-investing', 'faq-investment-trust'],
     updatedAt: '2026-05-12',
   },
@@ -264,9 +232,6 @@ export const faqs: FAQ[] = [
     question: '配当利回りを見るときの注意点は何ですか？',
     category: '配当',
     tags: ['配当利回り', '配当', 'インカムゲイン', '株価'],
-    term: '配当利回り',
-    answer:
-      '配当利回りは、株価に対して年間配当がどれくらいあるかを示す割合です。高ければよいと単純に判断するものではありません。',
     blocks: [
       {
         id: 'faq-dividend-yield-summary',
@@ -301,8 +266,6 @@ export const faqs: FAQ[] = [
         url: 'https://www.jsda.or.jp/',
       },
     ],
-    sourceUrls: ['https://www.jsda.or.jp/'],
-    sourceNote: '配当に関する基礎説明を参考にしたモックデータ。',
     relatedFaqIds: ['faq-dividend', 'faq-risk', 'faq-valuation'],
     updatedAt: '2026-05-12',
   },
@@ -313,9 +276,6 @@ export const faqs: FAQ[] = [
     question: 'インデックス投資は何に連動する投資方法ですか？',
     category: '投資方法',
     tags: ['インデックス投資', '指数', '分散投資', '投資信託'],
-    term: 'インデックス投資',
-    answer:
-      'インデックス投資は、市場全体などを表す指数に連動する成果を目指す投資方法です。',
     blocks: [
       {
         id: 'faq-index-investing-summary',
@@ -350,8 +310,6 @@ export const faqs: FAQ[] = [
         url: 'https://www.fsa.go.jp/',
       },
     ],
-    sourceUrls: ['https://www.fsa.go.jp/'],
-    sourceNote: '金融庁の投資教育情報を参考にしたモックデータ。',
     relatedFaqIds: ['faq-diversification', 'faq-investment-trust', 'faq-long-term-investing'],
     updatedAt: '2026-05-12',
   },
@@ -362,9 +320,6 @@ export const faqs: FAQ[] = [
     question: '分散投資はどのようにリスクを考える方法ですか？',
     category: 'リスク管理',
     tags: ['分散投資', 'リスク', '資産配分', '投資信託'],
-    term: '分散投資',
-    answer:
-      '分散投資は、投資先を一つに集中させず、複数の資産や地域に分ける考え方です。',
     blocks: [
       {
         id: 'faq-diversification-summary',
@@ -399,8 +354,6 @@ export const faqs: FAQ[] = [
         url: 'https://www.fsa.go.jp/',
       },
     ],
-    sourceUrls: ['https://www.fsa.go.jp/'],
-    sourceNote: '分散投資の基礎説明を参考にしたモックデータ。',
     relatedFaqIds: ['faq-risk', 'faq-index-investing', 'faq-investment-trust'],
     updatedAt: '2026-05-12',
   },
@@ -411,9 +364,6 @@ export const faqs: FAQ[] = [
     question: '長期投資では何を大切にしますか？',
     category: '投資方法',
     tags: ['長期投資', '複利', 'リスク', 'NISA'],
-    term: '長期投資',
-    answer:
-      '長期投資は、短期の値動きだけで判断せず、時間をかけて資産形成を考える投資方法です。',
     blocks: [
       {
         id: 'faq-long-term-investing-summary',
@@ -448,8 +398,6 @@ export const faqs: FAQ[] = [
         url: 'https://www.fsa.go.jp/',
       },
     ],
-    sourceUrls: ['https://www.fsa.go.jp/'],
-    sourceNote: '長期投資の教育的説明を参考にしたモックデータ。',
     relatedFaqIds: ['faq-compound-interest', 'faq-nisa', 'faq-risk'],
     updatedAt: '2026-05-12',
   },
@@ -460,9 +408,6 @@ export const faqs: FAQ[] = [
     question: '損切りはなぜリスク管理で話題になりますか？',
     category: 'リスク管理',
     tags: ['損切り', 'リスク管理', '売却', '損失'],
-    term: '損切り',
-    answer:
-      '損切りは、損失が大きくなりすぎる前に投資を手放す判断のことです。具体的な売買助言ではなく、リスク管理の概念として理解します。',
     blocks: [
       {
         id: 'faq-stop-loss-summary',
@@ -497,8 +442,6 @@ export const faqs: FAQ[] = [
         url: 'https://www.jsda.or.jp/',
       },
     ],
-    sourceUrls: ['https://www.jsda.or.jp/'],
-    sourceNote: 'リスク管理の概念説明を参考にしたモックデータ。',
     relatedFaqIds: ['faq-risk', 'faq-volatility', 'faq-capital-gain'],
     updatedAt: '2026-05-12',
   },
@@ -509,9 +452,6 @@ export const faqs: FAQ[] = [
     question: '投資でいうリスクは危険という意味だけですか？',
     category: 'リスク管理',
     tags: ['リスク', '価格変動', '元本割れ', '分散投資'],
-    term: 'リスク',
-    answer:
-      '投資のリスクは、結果が予想からぶれる可能性を指します。損失の可能性も含むため、元本保証ではないことを理解する必要があります。',
     blocks: [
       {
         id: 'faq-risk-summary',
@@ -546,8 +486,6 @@ export const faqs: FAQ[] = [
         url: 'https://www.fsa.go.jp/',
       },
     ],
-    sourceUrls: ['https://www.fsa.go.jp/'],
-    sourceNote: '投資リスクの基礎説明を参考にしたモックデータ。',
     relatedFaqIds: ['faq-diversification', 'faq-volatility', 'faq-stop-loss'],
     updatedAt: '2026-05-12',
   },
@@ -558,9 +496,6 @@ export const faqs: FAQ[] = [
     question: '複利は長期投資とどう関係しますか？',
     category: '投資の基本',
     tags: ['複利', '長期投資', '再投資', '資産形成'],
-    term: '複利',
-    answer:
-      '複利は、利益を元本に加えて次の利益を生む考え方です。長期で考えると効果が大きくなりやすい一方、利益が保証されるわけではありません。',
     blocks: [
       {
         id: 'faq-compound-interest-summary',
@@ -595,8 +530,6 @@ export const faqs: FAQ[] = [
         url: 'https://www.fsa.go.jp/',
       },
     ],
-    sourceUrls: ['https://www.fsa.go.jp/'],
-    sourceNote: '長期投資と複利の説明を参考にしたモックデータ。',
     relatedFaqIds: ['faq-long-term-investing', 'faq-investment-trust', 'faq-risk'],
     updatedAt: '2026-05-12',
   },
@@ -607,9 +540,6 @@ export const faqs: FAQ[] = [
     question: 'キャピタルゲインは配当とどう違いますか？',
     category: '利益の種類',
     tags: ['キャピタルゲイン', '売却益', '配当', '税金'],
-    term: 'キャピタルゲイン',
-    answer:
-      'キャピタルゲインは、買った価格より高く売れたときの売却益です。配当のように保有中に受け取る利益とは種類が異なります。',
     blocks: [
       {
         id: 'faq-capital-gain-summary',
@@ -644,8 +574,6 @@ export const faqs: FAQ[] = [
         url: 'https://www.jsda.or.jp/',
       },
     ],
-    sourceUrls: ['https://www.jsda.or.jp/'],
-    sourceNote: '売却益の基礎説明を参考にしたモックデータ。',
     relatedFaqIds: ['faq-dividend', 'faq-tax', 'faq-volatility'],
     updatedAt: '2026-05-12',
   },
@@ -656,9 +584,6 @@ export const faqs: FAQ[] = [
     question: '配当はどのような利益ですか？',
     category: '配当',
     tags: ['配当', '株主還元', 'インカムゲイン', '配当利回り'],
-    term: '配当',
-    answer:
-      '配当は、会社が利益の一部を株主に分配するものです。必ず支払われるものではなく、会社の方針や業績で変わります。',
     blocks: [
       {
         id: 'faq-dividend-summary',
@@ -693,8 +618,6 @@ export const faqs: FAQ[] = [
         url: 'https://www.jsda.or.jp/',
       },
     ],
-    sourceUrls: ['https://www.jsda.or.jp/'],
-    sourceNote: '配当の基礎説明を参考にしたモックデータ。',
     relatedFaqIds: ['faq-dividend-yield', 'faq-tax', 'faq-capital-gain'],
     updatedAt: '2026-05-12',
   },
@@ -705,9 +628,6 @@ export const faqs: FAQ[] = [
     question: 'バリュエーションは株価をどう考えるための言葉ですか？',
     category: '株価指標',
     tags: ['バリュエーション', 'PER', 'PBR', '株価評価'],
-    term: 'バリュエーション',
-    answer:
-      'バリュエーションは、会社の利益や資産などに対して株価がどのくらいの評価になっているかを見る考え方です。',
     blocks: [
       {
         id: 'faq-valuation-summary',
@@ -742,8 +662,6 @@ export const faqs: FAQ[] = [
         url: 'https://money-bu-jpx.com/',
       },
     ],
-    sourceUrls: ['https://money-bu-jpx.com/'],
-    sourceNote: '株価評価の基礎説明を参考にしたモックデータ。',
     relatedFaqIds: ['faq-per', 'faq-pbr', 'faq-growth-stock'],
     updatedAt: '2026-05-12',
   },
@@ -754,9 +672,6 @@ export const faqs: FAQ[] = [
     question: 'グロース株はどんな期待で買われやすい株ですか？',
     category: '株式の種類',
     tags: ['グロース株', '成長株', '成長性', 'バリュエーション'],
-    term: 'グロース株',
-    answer:
-      'グロース株は、将来の売上や利益の成長が期待される株のことです。期待が高い分、価格変動が大きくなることもあります。',
     blocks: [
       {
         id: 'faq-growth-stock-summary',
@@ -791,8 +706,6 @@ export const faqs: FAQ[] = [
         url: 'https://www.jsda.or.jp/',
       },
     ],
-    sourceUrls: ['https://www.jsda.or.jp/'],
-    sourceNote: '株式分類の基礎説明を参考にしたモックデータ。',
     relatedFaqIds: ['faq-value-stock', 'faq-valuation', 'faq-volatility'],
     updatedAt: '2026-05-12',
   },
@@ -803,9 +716,6 @@ export const faqs: FAQ[] = [
     question: 'バリュー株はどんな見方で注目されますか？',
     category: '株式の種類',
     tags: ['バリュー株', '割安株', 'PER', 'PBR'],
-    term: 'バリュー株',
-    answer:
-      'バリュー株は、利益や資産などに比べて株価が低く評価されていると見られる株のことです。',
     blocks: [
       {
         id: 'faq-value-stock-summary',
@@ -840,8 +750,6 @@ export const faqs: FAQ[] = [
         url: 'https://www.jsda.or.jp/',
       },
     ],
-    sourceUrls: ['https://www.jsda.or.jp/'],
-    sourceNote: '株式分類の基礎説明を参考にしたモックデータ。',
     relatedFaqIds: ['faq-growth-stock', 'faq-per', 'faq-pbr'],
     updatedAt: '2026-05-12',
   },
@@ -852,9 +760,6 @@ export const faqs: FAQ[] = [
     question: 'ボラティリティは値動きの何を表しますか？',
     category: 'リスク管理',
     tags: ['ボラティリティ', '価格変動', 'リスク', '値動き'],
-    term: 'ボラティリティ',
-    answer:
-      'ボラティリティは、価格の変動の大きさを表します。大きいほど上下に動きやすいことを意味します。',
     blocks: [
       {
         id: 'faq-volatility-summary',
@@ -889,8 +794,6 @@ export const faqs: FAQ[] = [
         url: 'https://www.jsda.or.jp/',
       },
     ],
-    sourceUrls: ['https://www.jsda.or.jp/'],
-    sourceNote: '価格変動リスクの説明を参考にしたモックデータ。',
     relatedFaqIds: ['faq-risk', 'faq-stop-loss', 'faq-growth-stock'],
     updatedAt: '2026-05-12',
   },
@@ -901,9 +804,6 @@ export const faqs: FAQ[] = [
     question: '投資の利益にはどんな税金が関係しますか？',
     category: '制度と税金',
     tags: ['税金', '譲渡益', '配当', 'NISA'],
-    term: '税金',
-    answer:
-      '投資では、売却益や配当に税金がかかる場合があります。NISAのように一定範囲で非課税になる制度もあります。',
     blocks: [
       {
         id: 'faq-tax-summary',
@@ -938,8 +838,6 @@ export const faqs: FAQ[] = [
         url: 'https://www.nta.go.jp/',
       },
     ],
-    sourceUrls: ['https://www.nta.go.jp/'],
-    sourceNote: '国税庁の税務情報を参考にしたモックデータ。',
     relatedFaqIds: ['faq-nisa', 'faq-capital-gain', 'faq-dividend'],
     updatedAt: '2026-05-12',
   },
@@ -950,9 +848,6 @@ export const faqs: FAQ[] = [
     question: '投資信託はどんな仕組みの商品ですか？',
     category: '投資商品',
     tags: ['投資信託', 'ファンド', '分散投資', 'インデックス投資'],
-    term: '投資信託',
-    answer:
-      '投資信託は、多くの投資家から集めたお金を専門家がまとめて運用する金融商品です。',
     blocks: [
       {
         id: 'faq-investment-trust-summary',
@@ -987,8 +882,6 @@ export const faqs: FAQ[] = [
         url: 'https://www.toushin.or.jp/',
       },
     ],
-    sourceUrls: ['https://www.toushin.or.jp/'],
-    sourceNote: '投資信託協会の基礎説明を参考にしたモックデータ。',
     relatedFaqIds: ['faq-index-investing', 'faq-diversification', 'faq-nisa'],
     updatedAt: '2026-05-12',
   },

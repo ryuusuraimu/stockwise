@@ -1,4 +1,4 @@
-import type { FAQ } from '../data/faqs'
+import type { FAQ } from '../types'
 
 const normalizeText = (text: string) => {
   return text.toLowerCase().replace(/\s+/g, '').trim()

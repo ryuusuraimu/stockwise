@@ -85,7 +85,9 @@ const getNoteFaq = (note: UserNote) => {
 }
 
 const getNoteBlock = (note: UserNote) => {
-  return getNoteFaq(note)?.blocks.find((block) => block.id === note.blockId)
+  return getNoteFaq(note)?.blocks.find(
+    (block) => block.id === note.sourceBlockId,
+  )
 }
 
 const getNoteSources = (note: UserNote) => {
