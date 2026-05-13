@@ -10,7 +10,8 @@ AI can help Stockwise development, but it should not replace product judgment or
 - Code review
 - Test idea generation
 - Documentation drafts
-- FAQ structure improvement
+- Mock official knowledge structure improvement
+- Source-grounded helper behavior review
 
 ## Human Responsibility
 
@@ -27,10 +28,12 @@ AI can help Stockwise development, but it should not replace product judgment or
 1. Read the product docs.
 2. Identify the smallest safe task.
 3. Propose a short plan.
-4. Make minimal code changes.
+4. Make minimal scoped changes.
 5. Explain changes.
 6. Provide manual test steps.
 7. Note risks and follow-up tasks.
+
+AI may assist implementation and review, but humans own product decisions, safety checks, and financial content responsibility. For Ask This Note behavior, human review must confirm that answers are grounded only in saved official knowledge and understanding notes.
 
 ## AI Task Template
 

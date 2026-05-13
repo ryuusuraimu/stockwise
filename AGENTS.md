@@ -2,12 +2,12 @@
 
 ## Project
 
-Stockwise is an Editorial Investor Notebook for beginner investors.
+Stockwise is a beginner-friendly Investor Knowledge Vault.
 
 It helps users:
-1. search investment FAQ knowledge,
-2. read structured official knowledge blocks,
-3. save those blocks as short understanding notes,
+1. read structured official investment knowledge,
+2. save that knowledge as short understanding notes,
+3. connect related concepts,
 4. later ask their saved notes in a source-grounded way.
 
 Phase 1 focuses on the local harness only.

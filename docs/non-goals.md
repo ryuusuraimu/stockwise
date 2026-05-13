@@ -1,6 +1,6 @@
 # Stockwise Non-Goals
 
-Stockwise should stay focused on safe beginner education and FAQ search. These items are excluded from the MVP.
+Stockwise should stay focused on safe beginner education through an Investor Knowledge Vault. These items are excluded from the MVP.
 
 ## Stock Recommendations
 
@@ -16,7 +16,7 @@ No content should imply that returns are certain. Investing always involves risk
 
 ## Stock Price Prediction
 
-Prediction features can create false confidence and are outside the educational FAQ purpose.
+Prediction features can create false confidence and are outside the educational vault purpose.
 
 ## Portfolio Management
 
@@ -32,11 +32,13 @@ Login is excluded from the MVP to keep the product simple and reduce privacy and
 
 ## User Accounts
 
-User accounts are not needed for validating the core FAQ search and learning experience.
+User accounts are not needed for validating the local vault, note-saving, and source-grounded learning experience.
 
-## AI Chat
+## Generic AI Chat
 
-AI chat is excluded unless explicitly requested because it can blur educational explanations with personalized financial advice.
+Generic AI chat is outside the MVP because it can blur educational explanations with personalized financial advice.
+
+Ask This Note is allowed only as a constrained mock helper. It must answer from saved official knowledge and understanding notes, not from open-ended model knowledge or external sources.
 
 ## Real-Time Market Data
 

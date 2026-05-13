@@ -12,7 +12,8 @@ He has seen investing content on social media, heard friends talk about NISA, an
 - Learn what to look up first.
 - Build enough confidence to keep studying.
 - Compare related concepts in plain language.
-- Revisit important terms later.
+- Save important official knowledge as his own understanding notes.
+- Revisit and ask those saved notes later.
 
 ## Anxieties
 
@@ -25,7 +26,7 @@ He has seen investing content on social media, heard friends talk about NISA, an
 
 Yuma searches with short, mixed, and sometimes vague queries. He may use Japanese terms, English abbreviations, or natural questions.
 
-He often starts from a term he heard somewhere, then needs help discovering the next related concept.
+He often starts from a term he heard somewhere, then needs help discovering the next related concept. After reading an explanation, he wants to keep the useful part in a place that still shows where it came from.
 
 ## Likely Search Terms
 
@@ -46,8 +47,8 @@ He often starts from a term he heard somewhere, then needs help discovering the 
 
 Yuma wants to know what a concept means, why it matters, what to be careful about, and what related idea he should learn next.
 
-His deeper problem is not only lack of information. He does not know what to search for, what to trust, or what to understand first.
+His deeper problem is not only lack of information. He does not know what to search for, what to trust, what to understand first, or how to keep a durable record of his own understanding.
 
 ## How Stockwise Helps
 
-Stockwise helps Yuma by providing clear FAQ cards, simple language, related concepts, tags, saved FAQs, and search history. It gives him a safe path through investing vocabulary without recommending stocks or implying that investing has guaranteed outcomes.
+Stockwise helps Yuma by providing official knowledge blocks, simple language, related concepts, source stamps, saved understanding notes, and a constrained Ask This Note helper. It gives him a safe path through investing vocabulary without recommending stocks, giving investment advice, or implying that investing has guaranteed outcomes.
