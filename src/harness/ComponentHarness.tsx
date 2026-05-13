@@ -66,10 +66,10 @@ export function ComponentHarness() {
             margin: '0 0 8px',
           }}
         >
-          Stockwise Component Harness
+          Components
         </p>
         <h1 style={{ fontSize: '28px', lineHeight: 1.35, margin: 0 }}>
-          Editorial Investor Notebook UI
+          Individual component previews
         </h1>
       </header>
 

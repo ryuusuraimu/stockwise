@@ -98,6 +98,23 @@ const getNoteSources = (note: UserNote) => {
   )
 }
 
+function GroupHeading({ label }: { label: string }) {
+  return (
+    <p
+      style={{
+        borderBottom: '1px solid #e4ded2',
+        color: '#315f46',
+        fontSize: '13px',
+        fontWeight: 800,
+        margin: '8px 0 -4px',
+        paddingBottom: '8px',
+      }}
+    >
+      {label}
+    </p>
+  )
+}
+
 function HarnessFrame({
   title,
   children,
@@ -311,7 +328,7 @@ function AskAnswerPreview({ answer }: { answer: AIAnswer }) {
     })
 
   return (
-    <HarnessFrame title="Ask My Notes unlocked mock answer state">
+    <HarnessFrame title="Ask My Notes — unlocked answer state">
       <section style={{ ...surfaceStyle, display: 'grid', gap: '14px' }}>
         <p
           style={{
@@ -355,24 +372,31 @@ export function ScreenStateHarness() {
             margin: '0 0 8px',
           }}
         >
-          Stockwise Screen State Harness
+          Screen States
         </p>
         <h1 style={{ fontSize: '30px', lineHeight: 1.35, margin: '0 0 8px' }}>
-          Editorial Investor Notebook states
+          Screen state previews
         </h1>
         <p style={mutedTextStyle}>
           モックデータだけでホーム、FAQ詳細、理解ノート、ノートに聞く状態を確認します。
         </p>
       </header>
 
-      <HomeStatePreview title="Home with 0 notes" notes={mockNotesEmpty} />
-      <HomeStatePreview title="Home with 1 note" notes={mockNotesOne} />
-      <HomeStatePreview title="Home with 2 notes" notes={mockNotesTwo} />
-      <HomeStatePreview title="Home with 3 notes" notes={mockNotesAskUnlocked} />
+      <GroupHeading label="ホーム" />
+      <HomeStatePreview title="Home — 0 notes" notes={mockNotesEmpty} />
+      <HomeStatePreview title="Home — 1 note" notes={mockNotesOne} />
+      <HomeStatePreview title="Home — 2 notes" notes={mockNotesTwo} />
+      <HomeStatePreview title="Home — 3 notes (Ask unlocked)" notes={mockNotesAskUnlocked} />
+
+      <GroupHeading label="ライブラリ" />
       <FaqDetailPreview />
-      <NotesPreview title="Notes empty state" notes={mockNotesEmpty} />
-      <NotesPreview title="Notes with saved notes" notes={mockNotesAskUnlocked} />
-      <HarnessFrame title="Ask My Notes locked state">
+
+      <GroupHeading label="理解ノート" />
+      <NotesPreview title="Notes — empty state" notes={mockNotesEmpty} />
+      <NotesPreview title="Notes — with saved notes" notes={mockNotesAskUnlocked} />
+
+      <GroupHeading label="ノートに聞く" />
+      <HarnessFrame title="Ask My Notes — locked state">
         <AskLockedPanel savedNoteCount={2} />
       </HarnessFrame>
       <AskAnswerPreview answer={unlockedAnswer} />
