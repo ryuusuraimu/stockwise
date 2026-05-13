@@ -1,18 +1,455 @@
 :root {
   font-family:
     Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  color: #0f172a;
-  background: #f8fafc;
+  color: var(--text-primary);
+  background: var(--bg-app);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+html,
+html[data-theme="paper-light"],
+[data-theme="paper-light"] {
+  --bg-app: #f4efe4;
+  --bg-nav: #ede5d6;
+  --bg-panel: #fbf8f0;
+  --bg-document: #fffdf7;
+  --bg-subtle: #f1eadc;
+  --text-primary: #22251f;
+  --text-secondary: #4f584e;
+  --text-muted: #747063;
+  --border-subtle: #ded5c4;
+  --border-strong: #b9ad99;
+  --accent: #315f46;
+  --accent-hover: #264d39;
+  --accent-soft: #dfe9dd;
+  --warning: #8a5d19;
+  --warning-soft: #f3dfb9;
+}
+
+html[data-theme="vault-dark"],
+[data-theme="vault-dark"] {
+  --bg-app: #171a18;
+  --bg-nav: #1d211f;
+  --bg-panel: #222724;
+  --bg-document: #262b28;
+  --bg-subtle: #1a1f1c;
+  --text-primary: #f0eadb;
+  --text-secondary: #c7beaa;
+  --text-muted: #938b7d;
+  --border-subtle: #38423a;
+  --border-strong: #526052;
+  --accent: #9bb592;
+  --accent-hover: #b1c7aa;
+  --accent-soft: #2c392f;
+  --warning: #d2ad69;
+  --warning-soft: #3e3322;
+}
+
 * {
   box-sizing: border-box;
 }
 
+html {
+  min-height: 100%;
+}
+
 body {
+  background: var(--bg-app);
   margin: 0;
+  min-height: 100vh;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+.vault-preview-frame {
+  background: var(--bg-app);
+  border: 1px solid var(--border-subtle);
+  border-radius: 4px;
+  color: var(--text-primary);
+  min-height: 720px;
+  overflow: hidden;
+}
+
+.vault-layout {
+  background: var(--bg-app);
+  color: var(--text-primary);
+  display: grid;
+  grid-template-columns: 248px minmax(440px, 1fr) 300px;
+  min-height: 720px;
+}
+
+.vault-nav {
+  background: var(--bg-nav);
+  border-right: 1px solid var(--border-subtle);
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 18px 14px;
+}
+
+.vault-brand {
+  border-bottom: 1px solid var(--border-subtle);
+  margin-bottom: 18px;
+  padding: 0 4px 16px;
+}
+
+.vault-product {
+  color: var(--text-primary);
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: 0;
+  margin: 0 0 6px;
+}
+
+.vault-workspace {
+  color: var(--text-muted);
+  font-size: 13px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.vault-workspace-row {
+  align-items: center;
+  display: flex;
+  gap: 8px;
+}
+
+.vault-workspace-input {
+  background: var(--bg-document);
+  border: 1px solid var(--border-strong);
+  border-radius: 3px;
+  color: var(--text-primary);
+  min-width: 0;
+  padding: 4px 6px;
+  width: 100%;
+}
+
+.vault-text-button {
+  background: transparent;
+  border: 1px solid var(--border-subtle);
+  border-radius: 3px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  font-size: 12px;
+  padding: 4px 7px;
+}
+
+.vault-text-button:hover {
+  border-color: var(--border-strong);
+  color: var(--text-primary);
+}
+
+.vault-nav-section {
+  display: grid;
+  gap: 4px;
+  margin-bottom: 22px;
+}
+
+.vault-nav-heading {
+  color: var(--text-muted);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  margin: 0 0 6px;
+  text-transform: uppercase;
+}
+
+.vault-nav-item {
+  align-items: center;
+  border-left: 2px solid transparent;
+  color: var(--text-secondary);
+  display: flex;
+  font-size: 14px;
+  font-weight: 650;
+  gap: 8px;
+  padding: 8px 9px;
+}
+
+.vault-nav-item.is-active {
+  background: var(--accent-soft);
+  border-left-color: var(--accent);
+  color: var(--text-primary);
+}
+
+.vault-document-pane {
+  background: var(--bg-app);
+  min-width: 0;
+  overflow: auto;
+  padding: 24px;
+}
+
+.vault-document {
+  background: var(--bg-document);
+  border: 1px solid var(--border-subtle);
+  border-radius: 3px;
+  display: grid;
+  gap: 22px;
+  margin: 0 auto;
+  max-width: 760px;
+  min-height: 640px;
+  padding: 34px 38px;
+}
+
+.vault-document-kicker {
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  margin: 0 0 8px;
+  text-transform: uppercase;
+}
+
+.vault-document-title {
+  color: var(--text-primary);
+  font-size: 30px;
+  line-height: 1.35;
+  margin: 0 0 10px;
+}
+
+.vault-document-subtitle {
+  color: var(--text-secondary);
+  font-size: 15px;
+  line-height: 1.9;
+  margin: 0;
+}
+
+.vault-section-divider {
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 18px;
+}
+
+.vault-inspector {
+  background: var(--bg-panel);
+  border-left: 1px solid var(--border-subtle);
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 18px;
+}
+
+.vault-inspector-title {
+  border-bottom: 1px solid var(--border-subtle);
+  color: var(--text-primary);
+  font-size: 15px;
+  font-weight: 800;
+  margin: 0 0 16px;
+  padding-bottom: 12px;
+}
+
+.vault-inspector-section {
+  border-bottom: 1px solid var(--border-subtle);
+  display: grid;
+  gap: 10px;
+  padding: 0 0 16px;
+  margin-bottom: 16px;
+}
+
+.vault-inspector-section:last-child {
+  border-bottom: 0;
+}
+
+.vault-inspector-heading {
+  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  margin: 0;
+}
+
+.source-stamp {
+  background: var(--bg-subtle);
+  border: 1px solid var(--border-strong);
+  border-radius: 2px;
+  color: var(--text-secondary);
+  display: inline-flex;
+  flex-wrap: wrap;
+  font-size: 12px;
+  font-weight: 750;
+  gap: 4px;
+  line-height: 1.5;
+  padding: 5px 8px;
+  width: fit-content;
+}
+
+.source-stamp-label {
+  color: var(--accent);
+}
+
+.ledger-entry {
+  border-bottom: 1px solid var(--border-subtle);
+  border-top: 1px solid var(--border-subtle);
+  display: grid;
+  gap: 8px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  padding: 10px 0;
+}
+
+.ledger-field {
+  min-width: 0;
+}
+
+.ledger-label {
+  color: var(--text-muted);
+  display: block;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  margin-bottom: 4px;
+}
+
+.ledger-value {
+  color: var(--text-secondary);
+  display: block;
+  font-size: 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.understanding-block {
+  display: grid;
+  gap: 14px;
+}
+
+.understanding-layer {
+  border-left: 2px solid var(--border-strong);
+  display: grid;
+  gap: 6px;
+  padding-left: 14px;
+}
+
+.understanding-layer.is-personal {
+  border-left-color: var(--accent);
+}
+
+.understanding-layer-title {
+  color: var(--text-primary);
+  font-size: 14px;
+  font-weight: 800;
+  margin: 0;
+}
+
+.understanding-layer-body {
+  color: var(--text-secondary);
+  font-size: 14px;
+  line-height: 1.9;
+  margin: 0;
+}
+
+.linked-knowledge {
+  display: grid;
+  gap: 1px;
+}
+
+.linked-row {
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  display: grid;
+  gap: 3px;
+  padding: 9px 0;
+  text-align: left;
+}
+
+.linked-row-title {
+  color: var(--text-primary);
+  font-size: 13px;
+  font-weight: 750;
+}
+
+.linked-row-meta {
+  color: var(--text-muted);
+  font-size: 12px;
+}
+
+.ask-note-panel {
+  background: var(--bg-subtle);
+  border: 1px solid var(--border-subtle);
+  border-radius: 3px;
+  display: grid;
+  gap: 10px;
+  padding: 12px;
+}
+
+.ask-note-panel p {
+  color: var(--text-secondary);
+  font-size: 13px;
+  line-height: 1.7;
+  margin: 0;
+}
+
+.ask-note-input {
+  background: var(--bg-document);
+  border: 1px solid var(--border-subtle);
+  border-radius: 3px;
+  color: var(--text-primary);
+  min-height: 74px;
+  padding: 9px;
+  resize: none;
+}
+
+.theme-toggle {
+  align-items: center;
+  display: inline-flex;
+  gap: 6px;
+}
+
+.theme-toggle-button {
+  background: transparent;
+  border: 1px solid var(--border-subtle);
+  border-radius: 3px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 750;
+  padding: 6px 9px;
+}
+
+.theme-toggle-button.is-active {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+  color: var(--text-primary);
+}
+
+@media (max-width: 1120px) {
+  .vault-layout {
+    grid-template-columns: 220px minmax(360px, 1fr);
+  }
+
+  .vault-inspector {
+    grid-column: 1 / -1;
+    border-left: 0;
+    border-top: 1px solid var(--border-subtle);
+  }
+}
+
+@media (max-width: 760px) {
+  .vault-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .vault-nav {
+    border-right: 0;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .vault-document-pane {
+    padding: 16px;
+  }
+
+  .vault-document {
+    padding: 24px 20px;
+  }
+
+  .ledger-entry {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }

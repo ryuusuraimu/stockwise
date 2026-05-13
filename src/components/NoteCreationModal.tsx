@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
 import type { FAQ, FAQBlock, UserNote } from '../types'
 
@@ -23,21 +23,34 @@ export function NoteCreationModal({
   onClose,
   onSave,
 }: NoteCreationModalProps) {
-  const [title, setTitle] = useState(faq.title)
-  const [excerpt, setExcerpt] = useState(initialDraft)
-  const [memo, setMemo] = useState('')
-
-  useEffect(() => {
-    if (isOpen) {
-      setTitle(faq.title)
-      setExcerpt(initialDraft)
-      setMemo('')
-    }
-  }, [faq.title, initialDraft, isOpen])
-
   if (!isOpen) {
     return null
   }
+
+  return (
+    <NoteCreationModalForm
+      key={`${faq.id}-${block.id}-${initialDraft}`}
+      faq={faq}
+      block={block}
+      initialDraft={initialDraft}
+      previewMode={previewMode}
+      onClose={onClose}
+      onSave={onSave}
+    />
+  )
+}
+
+function NoteCreationModalForm({
+  faq,
+  block,
+  initialDraft,
+  previewMode = false,
+  onClose,
+  onSave,
+}: Omit<NoteCreationModalProps, 'isOpen'>) {
+  const [title, setTitle] = useState(faq.title)
+  const [excerpt, setExcerpt] = useState(initialDraft)
+  const [memo, setMemo] = useState('')
 
   return (
     <div

@@ -29,20 +29,55 @@ Do not add vector DB or semantic search.
 
 ## Design direction
 
-Use an Editorial Investor Notebook UI.
+Stockwise V1.0 is an Obsidian-inspired Investor Knowledge Vault.
 
-Use:
-- left sidebar navigation
-- warm off-white background
-- soft white cards
+Use the Tactile Ledger visual system:
+- three-pane knowledge workspace
+- left Vault navigation
+- center source document / understanding note pane
+- right understanding context inspector
+- paper-like reading surfaces
+- thin ledger dividers
+- compact archival source stamps
 - deep muted green actions
-- deep charcoal text
-- source chips
-- document-like FAQ detail pages
-- calm knowledge cards
+- deep charcoal or warm ivory text depending on theme
 - Japanese labels as primary UI language
 
+Core layout:
+1. Left pane: Vault navigation
+2. Center pane: source document / understanding note
+3. Right pane: understanding context inspector
+
+Core saved-note layers:
+1. 公式知識
+2. 自分の理解
+3. つながる知識
+
+Themes:
+- Paper Light: cream / ivory, paper-like, editorial, readable, not pure white
+- Vault Dark: Obsidian-inspired charcoal / deep ink, calm, focused, not pure black, no neon
+
+Product and workspace naming:
+- Stockwise is the fixed product name.
+- The workspace/vault name is user-configurable.
+- Default workspace name: 投資理解のVault
+- Do not use “The Vault” as a fixed product name.
+
+Core UI primitives:
+- VaultLayout
+- NavigationPane
+- DocumentPane
+- ContextInspector
+- SourceStamp
+- LedgerEntry
+- UnderstandingBlock
+- LinkedKnowledgeSection
+- AskThisNotePanel
+
 Avoid:
+- generic SaaS dashboards
+- hero search layouts
+- card-grid dashboards as the main structure
 - trading dashboards
 - stock charts
 - candlestick charts
@@ -52,6 +87,7 @@ Avoid:
 - Google Material look
 - crypto-like UI
 - overly corporate Bloomberg-style terminals
+- pastel purple AI styling
 
 ## UI labels
 
