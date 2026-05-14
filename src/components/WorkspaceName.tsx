@@ -35,7 +35,11 @@ export function WorkspaceName() {
             }
           }}
         />
-        <button className="vault-text-button" type="button" onClick={saveWorkspaceName}>
+        <button
+          className="vault-text-button vault-inline-edit"
+          type="button"
+          onClick={saveWorkspaceName}
+        >
           保存
         </button>
       </div>
@@ -46,7 +50,7 @@ export function WorkspaceName() {
     <div className="vault-workspace-row">
       <p className="vault-workspace">{settings.workspaceName}</p>
       <button
-        className="vault-text-button"
+        className="vault-text-button vault-inline-edit"
         type="button"
         onClick={() => setIsEditing(true)}
       >

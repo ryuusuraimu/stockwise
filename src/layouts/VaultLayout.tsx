@@ -5,12 +5,13 @@ import { NavigationPane } from './NavigationPane'
 type VaultLayoutProps = {
   context: React.ComponentProps<typeof ContextInspector>
   document: React.ComponentProps<typeof DocumentPane>
+  navigation?: React.ComponentProps<typeof NavigationPane>
 }
 
-export function VaultLayout({ context, document }: VaultLayoutProps) {
+export function VaultLayout({ context, document, navigation }: VaultLayoutProps) {
   return (
     <div className="vault-layout">
-      <NavigationPane />
+      <NavigationPane {...navigation} />
       <DocumentPane {...document} />
       <ContextInspector {...context} />
     </div>

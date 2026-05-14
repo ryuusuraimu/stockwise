@@ -1,10 +1,28 @@
 import { ThemeToggle } from '../components/ThemeToggle'
 import { WorkspaceName } from '../components/WorkspaceName'
 
-const primaryNavigation = ['ホーム', '理解ノート', 'ライブラリ', 'ノートに聞く']
+export type VaultSection = 'home' | 'notes' | 'library' | 'ask'
+
+const primaryNavigation: Array<{
+  id: VaultSection
+  label: string
+}> = [
+  { id: 'home', label: 'ホーム' },
+  { id: 'notes', label: '理解ノート' },
+  { id: 'library', label: 'ライブラリ' },
+  { id: 'ask', label: 'ノートに聞く' },
+]
 const knowledgeAreas = ['指標', 'NISA・税金', 'リスク管理', '投資スタイル']
 
-export function NavigationPane() {
+type NavigationPaneProps = {
+  activeSection?: VaultSection
+  onSelectSection?: (section: VaultSection) => void
+}
+
+export function NavigationPane({
+  activeSection = 'notes',
+  onSelectSection,
+}: NavigationPaneProps) {
   return (
     <aside className="vault-nav">
       <div className="vault-brand">
@@ -15,12 +33,17 @@ export function NavigationPane() {
       <nav aria-label="Vault navigation" className="vault-nav-section">
         <p className="vault-nav-heading">Navigation</p>
         {primaryNavigation.map((item) => (
-          <span
-            className={`vault-nav-item ${item === '理解ノート' ? 'is-active' : ''}`}
-            key={item}
+          <button
+            aria-current={activeSection === item.id ? 'page' : undefined}
+            className={`vault-nav-item ${
+              activeSection === item.id ? 'is-active' : ''
+            }`}
+            key={item.id}
+            type="button"
+            onClick={() => onSelectSection?.(item.id)}
           >
-            {item}
-          </span>
+            {item.label}
+          </button>
         ))}
       </nav>
 
